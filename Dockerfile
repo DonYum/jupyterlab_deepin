@@ -43,6 +43,27 @@ RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+# Install extra Python packages
+RUN pip install \
+        'tqdm' \
+    && \
+    # conda install --quiet --yes \
+    #     'plotly-express' \
+    #     'fbprophet' \
+    # && \
+    # conda clean --all -f -y && \
+    # # Install Jupyterlab Extension
+    # jupyter labextension install jupyter-threejs --no-build && \
+    # # Build Jupyterlab Extension
+    # jupyter lab build --dev-build=False && \
+    # npm cache clean --force && \
+    # # Clean cache & fix-permissions
+    # rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    # rm -rf /home/$NB_USER/.cache/yarn && \
+    # rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
 # # Install facets which does not have a pip or conda package at the moment
 # RUN cd /tmp && \
 #     git clone https://github.com/PAIR-code/facets.git && \
