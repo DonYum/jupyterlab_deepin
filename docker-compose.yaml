@@ -4,7 +4,7 @@ version: "2.0"
 services:
   jupyterlab:
     container_name: quant_jupyterlab
-    image: daocloud.io/eric_ren/quant_jupyter
+    image: daocloud.io/eric_ren/quant_jupyter:latest
     # build: .
     restart: always
     user: root
