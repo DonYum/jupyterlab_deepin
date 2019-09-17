@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=jupyter/base-notebook
+ARG BASE_CONTAINER=jupyter/scipy-notebook
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Jupyter Project <eric_ren@aliyun.com>"
@@ -9,9 +9,6 @@ LABEL maintainer="Jupyter Project <eric_ren@aliyun.com>"
 RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     # conda install --quiet --yes \
     #     'plotly-express' \
-    #     'cufflinks' \
-    #     'pyyaml' \
-    #     'arrow' \
     #     'fbprophet' \
     # && \
     conda clean --all -f -y && \
@@ -26,7 +23,6 @@ RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
         'seaborn' \
         'tqdm' \
         'chart_studio' \
-        'dask' \
         'tushare' \
     && \
     # Fix cufflinks version not compatible.
