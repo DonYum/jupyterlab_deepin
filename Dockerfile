@@ -26,6 +26,8 @@ RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
         'seaborn' \
         'tqdm' \
         'chart_studio' \
+        'dask' \
+        'tushare' \
     && \
     # Fix cufflinks version not compatible.
     sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
