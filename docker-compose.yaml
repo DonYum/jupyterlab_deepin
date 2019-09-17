@@ -2,7 +2,7 @@
 version: "1.0"
 
 services:
-  data_platform:
+  jupyterlab:
     container_name: quant_jupyterlab
     image: daocloud.io/eric_ren/quant_jupyter
     # build: .
@@ -13,11 +13,11 @@ services:
     #     bash -c "bash web_in_docker.sh && bash celery_in_docker.sh && tail -f /dev/null"
     #     # bash -c "bash web_in_docker.sh start && tail -f /dev/null"
     environment:
-      - JUPYTER_ENABLE_LAB:yes
-      - NB_UID:${id -u}
-      - NB_GID:${id -g}
+      - JUPYTER_ENABLE_LAB: 'yes'
+      - NB_UID: ${UID}
+      - NB_GID: ${GID}
     ports:
       - "20001:8888"
     volumes:
-      - ./:/home/jovyan/work
+      - ${WORK_DIR}:/home/jovyan/work
       - /etc/localtime:/etc/localtime

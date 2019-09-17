@@ -10,13 +10,17 @@ Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 
 ## 使用
 
+### quick start
+
+`sh start.sh`
+
 ### pull from daocloud
 
 ```sh
 docker run --rm -p 20001:8888 --user root -v "$PWD":/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e NB_UID=`id -u` -e NB_GID=`id -g` -v /etc/localtime:/etc/localtime daocloud.io/eric_ren/quant_jupyter
 ```
 
-Ref: https://dashboard.daocloud.io/build-flows/4eaf3d3a-ea20-4a8c-be49-7f4d91d6cf2a
+Ref: https://hub.daocloud.io/repos/844278c8-9f16-4aa8-84e3-89fc80e7c3cf
 
 ### build by yourself
 
