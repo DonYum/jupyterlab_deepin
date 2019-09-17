@@ -16,13 +16,19 @@ Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 
     `curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io`
 
+    Ref: https://www.daocloud.io/mirror
+
 - docker-compose安装
 
     Ref: https://docs.docker.com/compose/install/
 
 ### quick start
 
-`WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up`
+```sh
+git clone https://github.com/DonYum/jupyterlab_quant.git
+cd jupyterlab_quant
+WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
+```
 
 其中：
 
