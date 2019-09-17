@@ -2,22 +2,22 @@
 version: "1.0"
 
 services:
-    data_platform:
-        container_name: quant_jupyterlab
-        image: daocloud.io/eric_ren/quant_jupyter
-        # build: .
-        restart: always
-        user: root
-        # privileged: true
-        # command: >
-        #     bash -c "bash web_in_docker.sh && bash celery_in_docker.sh && tail -f /dev/null"
-        #     # bash -c "bash web_in_docker.sh start && tail -f /dev/null"
-        environment:
-            - JUPYTER_ENABLE_LAB:yes
-            - NB_UID:${id -u}
-            - NB_GID:${id -g}
-        ports:
-            - "20001:8888"
-        volumes:
-            - ./:/home/jovyan/work
-            - /etc/localtime:/etc/localtime
+  data_platform:
+    container_name: quant_jupyterlab
+    image: daocloud.io/eric_ren/quant_jupyter
+    # build: .
+    restart: always
+    user: root
+    # privileged: true
+    # command: >
+    #     bash -c "bash web_in_docker.sh && bash celery_in_docker.sh && tail -f /dev/null"
+    #     # bash -c "bash web_in_docker.sh start && tail -f /dev/null"
+    environment:
+      - JUPYTER_ENABLE_LAB:yes
+      - NB_UID:${id -u}
+      - NB_GID:${id -g}
+    ports:
+      - "20001:8888"
+    volumes:
+      - ./:/home/jovyan/work
+      - /etc/localtime:/etc/localtime
