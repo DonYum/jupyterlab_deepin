@@ -45,7 +45,7 @@ RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
 
 # Install extra Python packages
 RUN pip install \
-        'tqdm' \
+        'TA-Lib' \
     && \
     # conda install --quiet --yes \
     #     'plotly-express' \
@@ -64,13 +64,15 @@ RUN pip install \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# # Install facets which does not have a pip or conda package at the moment
+# # Install TA-Lib which does not have a pip or conda package at the moment
 # RUN cd /tmp && \
-#     git clone https://github.com/PAIR-code/facets.git && \
-#     cd facets && \
-#     jupyter nbextension install facets-dist/ --sys-prefix && \
+#     wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+#     tar -xzf ta-lib-0.4.0-src.tar.gz && \
+#     cd ta-lib && \
+#     ./configure --prefix=/usr && make && make install && \
 #     cd && \
 #     rm -rf /tmp/facets && \
+#     pip install 'TA-Lib' && \
 #     fix-permissions $CONDA_DIR && \
 #     fix-permissions /home/$NB_USER
 
