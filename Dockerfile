@@ -57,7 +57,7 @@ RUN cd /tmp && \
 
 USER $NB_UID
 
-ENV TA_LIBRARY_PATH=/usr/lib
+ENV TA_LIBRARY_PATH=/usr/lib \
     TA_INCLUDE_PATH=/usr/include
 
 # RUN export TA_LIBRARY_PATH=/usr/lib && \
