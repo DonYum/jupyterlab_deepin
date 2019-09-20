@@ -46,6 +46,14 @@ RUN cd /tmp && \
     ./configure --prefix=/usr && make && make install && \
     cd && \
     rm -rf /tmp/ta-lib && \
+    # # install zh fonts
+    # cd /tmp && \
+    # git clone https://github.com/neroxps/Docker-Only-Office-Chinese-font.git && \
+    # cd Docker-Only-Office-Chinese-font/ && \
+    # cp -a winfont /usr/share/fonts/ && \
+    # fc-cache -f -v && \
+    # cd && \
+    # rm -rf Docker-Only-Office-Chinese-font/ && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
@@ -75,5 +83,7 @@ RUN pip install \
     # rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
+COPY nb_demo /home/$NB_USER/nb_demo
 
 USER $NB_UID

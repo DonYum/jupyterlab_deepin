@@ -12,7 +12,7 @@ services:
     # command: >
     #     bash -c "bash web_in_docker.sh && bash celery_in_docker.sh && tail -f /dev/null"
     #     # bash -c "bash web_in_docker.sh start && tail -f /dev/null"
-    working_dir: /home/jovyan/work
+    working_dir: /home/jovyan/
     environment:
       JUPYTER_ENABLE_LAB: "yes"
       NB_UID: ${UID}
