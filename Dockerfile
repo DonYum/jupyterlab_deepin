@@ -7,19 +7,13 @@ LABEL maintainer="Jupyter Project <eric_ren@aliyun.com>"
 
 # Install Python 3 packages
 RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
-    # conda install --quiet --yes \
-    #     'plotly-express' \
-    #     'fbprophet' \
-    # && \
     conda clean --all -f -y && \
     pip install \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
         'arrow' \
-        # 'fbprophet' \
         'mongoengine' \
-        # 'pathos' \
         'seaborn' \
         'tqdm' \
         'chart_studio' \
@@ -60,15 +54,11 @@ USER $NB_UID
 ENV TA_LIBRARY_PATH=/usr/lib \
     TA_INCLUDE_PATH=/usr/include
 
-# RUN export TA_LIBRARY_PATH=/usr/lib && \
-#     export TA_INCLUDE_PATH=/usr/include && \
-#     pip install 'TA-Lib' && \
-#     fix-permissions $CONDA_DIR && \
-#     fix-permissions /home/$NB_USER
-
 # Install extra Python packages
 RUN pip install \
         'TA-Lib' \
+        # 'fbprophet' \
+        # 'pathos' \
     && \
     conda install --quiet --yes \
         'lxml' \
