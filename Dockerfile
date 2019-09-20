@@ -64,21 +64,28 @@ RUN pip install \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+USER root
+
 # Install TA-Lib which does not have a pip or conda package at the moment
 RUN cd /tmp && \
     wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     tar -xzf ta-lib-0.4.0-src.tar.gz && \
     cd ta-lib && \
     ./configure --prefix=/usr && make && make install && \
-    export TA_LIBRARY_PATH=/usr/lib && \
-    export TA_INCLUDE_PATH=/usr/include && \
-    pip install 'TA-Lib' && \
     cd && \
     rm -rf /tmp/ta-lib && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+USER $NB_UID
+
 ENV TA_LIBRARY_PATH /usr/lib
 ENV TA_INCLUDE_PATH /usr/include
+
+RUN export TA_LIBRARY_PATH=/usr/lib && \
+    export TA_INCLUDE_PATH=/usr/include && \
+    pip install 'TA-Lib' && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 USER $NB_UID
