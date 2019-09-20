@@ -43,30 +43,8 @@ RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# Install extra Python packages
-RUN pip install \
-        'tqdm' \
-    && \
-    # conda install --quiet --yes \
-    #     'plotly-express' \
-    #     'fbprophet' \
-    # && \
-    # conda clean --all -f -y && \
-    # # Install Jupyterlab Extension
-    # jupyter labextension install jupyter-threejs --no-build && \
-    # # Build Jupyterlab Extension
-    # jupyter lab build --dev-build=False && \
-    # npm cache clean --force && \
-    # # Clean cache & fix-permissions
-    # rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    # rm -rf /home/$NB_USER/.cache/yarn && \
-    # rm -rf /home/$NB_USER/.node-gyp && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
-
-USER root
-
 # Install TA-Lib which does not have a pip or conda package at the moment
+USER root
 RUN cd /tmp && \
     wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     tar -xzf ta-lib-0.4.0-src.tar.gz && \
@@ -79,12 +57,32 @@ RUN cd /tmp && \
 
 USER $NB_UID
 
-ENV TA_LIBRARY_PATH /usr/lib
-ENV TA_INCLUDE_PATH /usr/include
+ENV TA_LIBRARY_PATH=/usr/lib
+    TA_INCLUDE_PATH=/usr/include
 
-RUN export TA_LIBRARY_PATH=/usr/lib && \
-    export TA_INCLUDE_PATH=/usr/include && \
-    pip install 'TA-Lib' && \
+# RUN export TA_LIBRARY_PATH=/usr/lib && \
+#     export TA_INCLUDE_PATH=/usr/include && \
+#     pip install 'TA-Lib' && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER
+
+# Install extra Python packages
+RUN pip install \
+        'TA-Lib' \
+    && \
+    conda install --quiet --yes \
+        'lxml' \
+    && \
+    conda clean --all -f -y && \
+    # # Install Jupyterlab Extension
+    # jupyter labextension install jupyter-threejs --no-build && \
+    # # Build Jupyterlab Extension
+    # jupyter lab build --dev-build=False && \
+    # npm cache clean --force && \
+    # # Clean cache & fix-permissions
+    # rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    # rm -rf /home/$NB_USER/.cache/yarn && \
+    # rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 

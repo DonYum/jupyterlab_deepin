@@ -25,7 +25,7 @@ Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 ### quick start
 
 ```sh
-docker pull daocloud.io/eric_ren/quant_jupyter:latest
+docker pull daocloud.io/eric_ren/quant_jupyter
 git clone https://github.com/DonYum/jupyterlab_quant.git
 cd jupyterlab_quant
 WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
@@ -55,4 +55,4 @@ docker build --rm -t quant/jupyter-lab .
 
 ## TODO
 
-- TA-Lib
+- matplotlib中文字体
