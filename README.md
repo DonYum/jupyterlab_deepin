@@ -36,6 +36,8 @@ WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
 - WORK_DIR: 工作目录
 - PORT: 暴露的端口
 
+## 其他
+
 ### Run by specified cmd (img from daocloud)
 
 ```sh
