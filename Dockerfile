@@ -84,8 +84,8 @@ RUN pip install \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# RUN mkdir /home/$NB_USER/nb_demo
-COPY nb_demo /home/$NB_USER/nb_demo
+RUN mkdir /home/$NB_USER/nb_demo
+COPY nb_demo/* /home/$NB_USER/nb_demo/
 RUN fix-permissions /home/$NB_USER
 
 USER $NB_UID
