@@ -9,6 +9,7 @@ LABEL maintainer="Jupyter Project <eric_ren@aliyun.com>"
 RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
+        'jupyterlab==1.2.0' \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
