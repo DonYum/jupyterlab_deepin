@@ -38,11 +38,9 @@ WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
 
 默认密码：`11112222`
 
-## 修改jupyter配置
-
-repo里的`jupyter_notebook_config.py`、`jupyter_notebook_config.json`文件会在build时候替换`/home/jovyan/.jupyter/`下的对应文件，所以配置很好修改。
-
 ### 定制密码
+
+*密码可以由参数方式启动：https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#notebook-options*
 
 事先生成一个密码hash：
 
@@ -50,7 +48,11 @@ repo里的`jupyter_notebook_config.py`、`jupyter_notebook_config.json`文件会
 from notebook.auth import passwd; passwd()
 ```
 
-然后修改该repo里的`jupyter_notebook_config.json`文件，然后docker-compose启动即可。
+然后修改Dockerfile文件的CMD位置，然后docker-compose启动即可。
+
+### 修改jupyter配置
+
+不建议直接修改`jupyter_notebook_config.py`文件，可以在Dockerfile文件的CMD后面加参数。
 
 ## 其他
 

@@ -16,7 +16,7 @@
 # ffmpy, msgpack, piexif, pillow
 
 requests
-fbprophet
+# fbprophet
 rarfile
 filetype
 redis

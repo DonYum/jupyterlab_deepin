@@ -5,14 +5,13 @@ FROM daocloud.io/eric_ren/quant_jupyter
 MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
 LABEL description="custumed jupyterlab env."
 
-COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
-COPY ./jupyter_notebook_config.json /home/jovyan/.jupyter/jupyter_notebook_config.json
-
 ADD ./ /work_dir
 WORKDIR /work_dir
 
 # Install spec packs.
 # -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 RUN pip install -r ./requirements.txt
+
+CMD ["start-notebook.sh", "--NotebookApp.password='sha1:57b16c557bf1:04515fe200bc0343c27c44be0e716f866f8fcaa9'"]
 
 USER $NB_UID
