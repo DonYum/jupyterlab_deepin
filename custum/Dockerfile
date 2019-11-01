@@ -5,6 +5,9 @@ FROM daocloud.io/eric_ren/quant_jupyter
 MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
 LABEL description="custumed jupyterlab env."
 
+COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
+# RUN sed -i "s/#c.NotebookApp.password = ''/c.NotebookApp.password = 'sha1:57b16c557bf1:04515fe200bc0343c27c44be0e716f866f8fcaa9'/g" /home/jovyan/.jupyter/jupyter_notebook_config.py
+
 ADD ./ /work_dir
 WORKDIR /work_dir
 

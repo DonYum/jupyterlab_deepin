@@ -21,3 +21,6 @@ services:
     volumes:
       - ${WORK_DIR}:/home/jovyan/work
       - /etc/localtime:/etc/localtime
+      # - /data_cache:/data_cache
+      # - /mnt/cephfs_online:/mnt/cephfs_online
+      # - /data/rjz:/data/rjz
