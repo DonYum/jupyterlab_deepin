@@ -1,0 +1,23 @@
+
+version: "2.0"
+
+services:
+  jupyterlab:
+    container_name: custom_jupyterlab
+    build: .
+    restart: always
+    user: root
+    # privileged: true
+    # command: >
+    #     bash -c "bash web_in_docker.sh && bash celery_in_docker.sh && tail -f /dev/null"
+    #     # bash -c "bash web_in_docker.sh start && tail -f /dev/null"
+    working_dir: /home/jovyan/
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      NB_UID: ${UID}
+      NB_GID: ${GID}
+    ports:
+      - ${PORT}:8888
+    volumes:
+      - ${WORK_DIR}:/home/jovyan/work
+      - /etc/localtime:/etc/localtime

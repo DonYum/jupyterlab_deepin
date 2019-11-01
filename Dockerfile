@@ -3,7 +3,8 @@
 ARG BASE_CONTAINER=jupyter/scipy-notebook
 FROM $BASE_CONTAINER
 
-LABEL maintainer="Jupyter Project <eric_ren@aliyun.com>"
+MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
+LABEL description="jupyterlab env"
 
 # Install Python 3 packages
 RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
