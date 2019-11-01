@@ -38,6 +38,10 @@ WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
 - 启动后exec进去安装；
 - 修改`requirement.txt`文件后重新启动。
 
+### 挂载指定目录
+
+在`docker-compose.yaml`里的`volumes`参数后面添加即可。
+
 ### 定制密码
 
 事先生成一个密码hash：
