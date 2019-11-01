@@ -1,33 +1,25 @@
-# jupyterlab_quant
+# jupyterlab_deepin
 
-构建用于Quant的jupyterlab Docker运行环境。
+构建开箱即用的jupyterlab Docker运行环境。
 
-## 依赖关系
+## quick start
 
-current -> scipy-notebook -> minimal-notebook -> base-notebook
-
-Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
-
-## 使用
-
-### 环境配置
-
-- 配置daocloud源
+### 配置daocloud源
 
     `curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io`
 
     Ref: https://www.daocloud.io/mirror
 
-- docker-compose安装
+### docker-compose安装
 
     Ref: https://docs.docker.com/compose/install/
 
-### quick start
+### 启动
 
 ```sh
 docker pull daocloud.io/eric_ren/quant_jupyter
 git clone https://github.com/DonYum/jupyterlab_quant.git
-cd jupyterlab_quant
+cd jupyterlab_quant/custom
 WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
 ```
 
@@ -38,9 +30,15 @@ WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
 
 默认密码：`11112222`
 
-### 定制密码
+## 配置
 
-*密码可以由参数方式启动：https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#notebook-options*
+### 安装特定包
+
+- jupyter里面直接安装或启动terminal安装；
+- 启动后exec进去安装；
+- 修改`requirement.txt`文件后重新启动。
+
+### 定制密码
 
 事先生成一个密码hash：
 
@@ -53,6 +51,8 @@ from notebook.auth import passwd; passwd()
 ### 修改jupyter配置
 
 不建议直接修改`jupyter_notebook_config.py`文件，可以在Dockerfile文件的CMD后面加参数。
+
+*密码可以由参数方式启动：https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#notebook-options*
 
 ## 其他
 
@@ -72,6 +72,12 @@ docker build --rm -t quant/jupyter-lab .
 ```
 
 如果在使用过程中缺少packages，直接安装即可。
+
+## 依赖关系
+
+current -> scipy-notebook -> minimal-notebook -> base-notebook
+
+Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 
 ## TODO
 
