@@ -1,26 +1,27 @@
-# h5py
-# requests
-# pillow
+h5py
+requests
+pillow
 
-# piexif
+piexif
 rarfile
-# ffmpy
-# msgpack
+ffmpy
+msgpack
 filetype
 redis
 gevent
 features
-# markdown
-# Jinja2
+markdown
+Jinja2
 grpcio
 grpcio-tools
 boto
 mongoengine
-# blinker
+blinker
 imagehash
 distance
 sklearn
 scipy
+flask_mongoengine
 
 tqdm
 tenacity
