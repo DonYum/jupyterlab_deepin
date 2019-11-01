@@ -1,30 +1,36 @@
-# h5py
-# requests
-# pillow
 
-# piexif
+# Already in `jupyter/scipy-notebook`:
+# https://hub.docker.com/r/jupyter/scipy-notebook/dockerfile
+# 'beautifulsoup4=4.8.*', 'conda-forge::blas=*=openblas', 'bokeh=1.3*', 'cloudpickle=1.2*',
+# 'cython=0.29*', 'dask=2.2.*', 'dill=0.3*', 'h5py=2.9*', 'hdf5=1.10*',
+# 'ipywidgets=7.5*', 'matplotlib-base=3.1.*', 'numba=0.45*', 'numexpr=2.6*',
+# 'pandas=0.25*', 'patsy=0.5*', 'protobuf=3.9.*', 'scikit-image=0.15*',
+# 'scikit-learn=0.21*', 'scipy=1.3*', 'seaborn=0.9*', 'sqlalchemy=1.3*',
+# 'statsmodels=0.10*', 'sympy=1.4*', 'vincent=0.4.*', 'xlrd',
+
+# Already in current image:
+# 'jupyterlab==1.2.0', 'plotly-express', 'cufflinks', 'pyyaml', 'arrow', 'mongoengine', 'seaborn', 'tqdm', 'chart_studio', 'tushare',
+# 'lxml', 'TA-Lib',
+
+# Maybe these are needed in future:
+# ffmpy, msgpack, piexif, pillow
+
+requests
+fbprophet
 rarfile
-# ffmpy
-# msgpack
 filetype
 redis
 gevent
 features
-# markdown
-# Jinja2
 grpcio
 grpcio-tools
 boto
-mongoengine
-# blinker
 imagehash
 distance
 sklearn
-scipy
+# scipy
 
-tqdm
 tenacity
 
 pathos
-pyyaml
 redlock
