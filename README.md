@@ -1,4 +1,4 @@
-# jupyterlab_deepin
+# Deepin Jupyterlab
 
 构建开箱即用的jupyterlab Docker运行环境。
 
