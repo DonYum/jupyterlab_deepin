@@ -1,0 +1,23 @@
+
+version: "2.0"
+
+services:
+  jupyterlab:
+    container_name: custom_jupyterlab
+    build: .
+    restart: always
+    user: root
+    # privileged: true
+    working_dir: /home/jovyan/
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      NB_UID: ${UID}
+      NB_GID: ${GID}
+    ports:
+      - ${PORT}:8888
+    volumes:
+      - ${WORK_DIR}:/home/jovyan/work
+      - /etc/localtime:/etc/localtime
+      - /data_cache:/data_cache
+      - /mnt/cephfs_online:/mnt/cephfs_online
+      - /data/rjz:/data/rjz
