@@ -16,11 +16,11 @@
 # ffmpy, msgpack, piexif, pillow
 
 requests
-# fbprophet
-rarfile
-filetype
+fbprophet
+# rarfile
+# filetype
 redis
-gevent
+# gevent
 features
 sklearn
 # scipy
