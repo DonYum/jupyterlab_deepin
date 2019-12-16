@@ -8,6 +8,11 @@ FROM $BASE_CONTAINER
 LABEL maintainer="Jiangzhe Ren<eric_ren@aliyun.com>"
 LABEL description="jupyterlab env"
 
+# unpin python
+USER root
+RUN rm -rf $CONDA_DIR/conda-meta/pinned
+USER $NB_UID
+
 # Install Python 3 packages
 #   使用python3.6：faiss不支持3.7
 #   手动指定jupyterlab版本
