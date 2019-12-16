@@ -25,8 +25,8 @@ RUN conda install --quiet --yes python=3.6 && \
         -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
     && \
     # Fix cufflinks version not compatible.
-    sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
-    sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
+    sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.6/site-packages/cufflinks/*.py && \
+    sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.6/site-packages/cufflinks/*.py && \
     # Install Jupyterlab Extension
     jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter labextension install @jupyterlab/plotly-extension --no-build && \

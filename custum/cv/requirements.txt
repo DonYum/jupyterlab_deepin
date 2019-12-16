@@ -9,7 +9,7 @@
 # 'statsmodels=0.10*', 'sympy=1.4*', 'vincent=0.4.*', 'xlrd',
 
 # Already exists in current image:
-# 'jupyterlab==1.2.0', 'plotly-express', 'cufflinks', 'pyyaml', 'arrow', 'mongoengine', 'seaborn', 'tqdm', 'chart_studio', 'tushare',
+# 'jupyterlab', 'faiss-cpu', 'plotly-express', 'cufflinks', 'pyyaml', 'arrow', 'mongoengine', 'seaborn', 'tqdm', 'chart_studio', 'tushare',
 # 'lxml', 'TA-Lib',
 
 # Maybe these are needed in future:

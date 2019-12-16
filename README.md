@@ -18,9 +18,9 @@
 
 ```sh
 docker pull daocloud.io/eric_ren/quant_jupyter
-git clone https://github.com/DonYum/jupyterlab_quant.git
-cd jupyterlab_quant/custom
-WORK_DIR=~/jupyter PORT=20001  UID=${UID} GID=${GID} docker-compose up
+git clone https://github.com/DonYum/jupyterlab_deepin.git
+cd jupyterlab_deepin/custom/simple
+WORK_DIR=~/jupyter PORT=20001 NAME=code_test UID=${UID} GID=${GID} docker-compose up
 ```
 
 其中：

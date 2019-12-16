@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   jupyterlab:
-    container_name: code_test
+    container_name: ${NAME}
     build: .
     restart: always
     user: root

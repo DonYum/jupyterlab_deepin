@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   jupyterlab:
-    container_name: custom_jupyterlab
+    container_name: data_platform
     build: .
     restart: always
     user: root

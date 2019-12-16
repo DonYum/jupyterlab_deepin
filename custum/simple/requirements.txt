@@ -15,19 +15,19 @@
 # Maybe these are needed in future:
 # ffmpy, msgpack, piexif, pillow
 
-requests
-# fbprophet
-rarfile
-filetype
-redis
-gevent
-features
-sklearn
-# scipy
+# requests
+# # fbprophet
+# rarfile
+# filetype
+# redis
+# gevent
+# features
+# sklearn
+# # scipy
 
-tenacity
+# tenacity
 
-pathos
-redlock
+# pathos
+# redlock
 
-dictdiffer
+# dictdiffer
