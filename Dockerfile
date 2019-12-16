@@ -3,7 +3,7 @@
 ARG BASE_CONTAINER=jupyter/scipy-notebook
 FROM $BASE_CONTAINER
 
-MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
+LABEL maintainer="Jiangzhe Ren<eric_ren@aliyun.com>"
 LABEL description="jupyterlab env"
 
 # Install Python 3 packages

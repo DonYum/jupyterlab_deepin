@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 FROM daocloud.io/eric_ren/quant_jupyter
 
-MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
+LABEL maintainer="Jiangzhe Ren<eric_ren@aliyun.com>"
 LABEL description="custumed jupyterlab env."
 
 ADD ./ /work_dir
