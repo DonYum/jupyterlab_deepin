@@ -1,0 +1,22 @@
+
+version: "2.0"
+
+services:
+  jupyterlab:
+    container_name: ${NAME}
+    build: .
+    restart: always
+    user: root
+    # privileged: true
+    working_dir: /home/jovyan/
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      NB_UID: ${UID}
+      NB_GID: ${GID}
+    ports:
+      - ${PORT}:8888
+    volumes:
+      - ${WORK_DIR}:/home/jovyan/work
+      - /etc/localtime:/etc/localtime
+      - /home/history_data/tick:/data/tick
+      - /home/qh02/ticks:/ticks
