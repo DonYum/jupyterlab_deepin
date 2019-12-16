@@ -7,7 +7,8 @@ MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
 LABEL description="jupyterlab env"
 
 # Install Python 3 packages
-RUN conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
+RUN conda install --quiet --yes python=3.6 && \
+    conda install pytorch torchvision cpuonly faiss-cpu -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
         'jupyterlab==1.2.0' \

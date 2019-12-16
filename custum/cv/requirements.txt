@@ -36,3 +36,4 @@ pathos
 redlock
 
 dictdiffer
+baidu-aip
