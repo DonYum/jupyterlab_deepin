@@ -1,18 +1,31 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=jupyter/scipy-notebook
+
+# 使用minimal-notebook替代scipy-notebook
+ARG BASE_CONTAINER=jupyter/minimal-notebook
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Jiangzhe Ren<eric_ren@aliyun.com>"
 LABEL description="jupyterlab env"
 
 # Install Python 3 packages
-# 使用python3.6：faiss不支持3.7
+#   使用python3.6：faiss不支持3.7
+#   手动指定jupyterlab版本
 RUN conda install --quiet --yes python=3.6 && \
+    conda install --quiet --yes \
+        'ipywidgets' \
+        'numba' \
+        'protobuf' \
+        'scikit-learn' \
+        'scipy' \
+        'sqlalchemy' \
+        'statsmodels' \
+        'matplotlib' \
+    && \
     conda install pytorch torchvision cpuonly faiss-cpu -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
-        'jupyterlab' \
+        'jupyterlab==1.2.4' \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
@@ -29,7 +42,14 @@ RUN conda install --quiet --yes python=3.6 && \
     sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.6/site-packages/cufflinks/*.py
 
 # Install Jupyterlab Extension
-RUN jupyter labextension install @jupyterlab/toc --no-build && \
+    # Activate ipywidgets extension in the environment that runs the notebook server
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    # Also activate ipywidgets extension for JupyterLab
+    # Check this URL for most recent compatibilities
+    # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager@^1.0.1 --no-build && \
+    jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
+    jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter labextension install @jupyterlab/plotly-extension --no-build && \
     jupyter labextension install ipyvolume --no-build && \
     jupyter labextension install jupyter-threejs --no-build && \
@@ -42,6 +62,11 @@ RUN jupyter labextension install @jupyterlab/toc --no-build && \
     rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
+# # Import matplotlib the first time to build the font cache.
+# ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
+# RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
+#     fix-permissions /home/$NB_USER
 
 # Install TA-Lib which does not have a pip or conda package at the moment
 USER root
