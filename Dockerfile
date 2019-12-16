@@ -7,11 +7,12 @@ MAINTAINER Jiangzhe Ren<eric_ren@aliyun.com>
 LABEL description="jupyterlab env"
 
 # Install Python 3 packages
+# 使用python3.6：faiss不支持3.7
 RUN conda install --quiet --yes python=3.6 && \
     conda install pytorch torchvision cpuonly faiss-cpu -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
-        'jupyterlab==1.2.0' \
+        'jupyterlab' \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
@@ -21,6 +22,7 @@ RUN conda install --quiet --yes python=3.6 && \
         'tqdm' \
         'chart_studio' \
         'tushare' \
+        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
     && \
     # Fix cufflinks version not compatible.
     sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
@@ -70,6 +72,7 @@ RUN pip install \
         'TA-Lib' \
         # 'fbprophet' \
         # 'pathos' \
+        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
     && \
     conda install --quiet --yes \
         'lxml' \
