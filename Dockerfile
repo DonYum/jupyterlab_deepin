@@ -14,10 +14,11 @@ RUN rm -rf $CONDA_DIR/conda-meta/pinned
 USER $NB_UID
 
 # Install Python 3 packages
-#   使用python3.6：faiss不支持3.7
 #   手动指定jupyterlab版本
-RUN conda install --quiet --yes python=3.6 && \
-    conda install --quiet --yes \
+#   -- 使用python3.6： faiss-cpu不支持3.7 --
+# RUN conda install --quiet --yes python=3.6 && \
+RUN conda install --quiet --yes \
+        'jupyterlab=1.2.4' \
         'ipywidgets' \
         'numba' \
         'protobuf' \
@@ -27,10 +28,9 @@ RUN conda install --quiet --yes python=3.6 && \
         'statsmodels' \
         'matplotlib' \
     && \
-    conda install pytorch torchvision cpuonly faiss-cpu -c pytorch --quiet --yes && \
+    conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
-        'jupyterlab==1.2.4' \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
@@ -43,8 +43,8 @@ RUN conda install --quiet --yes python=3.6 && \
         -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
     && \
     # Fix cufflinks version not compatible.
-    sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.6/site-packages/cufflinks/*.py && \
-    sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.6/site-packages/cufflinks/*.py
+    sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
+    sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py
 
 # Install Jupyterlab Extension
     # Activate ipywidgets extension in the environment that runs the notebook server
