@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   jupyterlab:
-    container_name: quant_jupyter
+    container_name: ${NAME}
     build: .
     restart: always
     user: root
