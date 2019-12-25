@@ -24,6 +24,7 @@ RUN conda install --quiet --yes \
         'protobuf' \
         'scikit-learn' \
         'scipy' \
+        'lxml' \
         'sqlalchemy' \
         'statsmodels' \
         'matplotlib' \
@@ -34,8 +35,6 @@ RUN conda install --quiet --yes \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
-        'arrow' \
-        'mongoengine' \
         'seaborn' \
         'tqdm' \
         'chart_studio' \
@@ -101,14 +100,8 @@ ENV TA_LIBRARY_PATH=/usr/lib \
 # Install extra Python packages
 RUN pip install \
         'TA-Lib' \
-        # 'fbprophet' \
-        # 'pathos' \
         -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
     && \
-    conda install --quiet --yes \
-        'lxml' \
-    && \
-    conda clean --all -f -y && \
     # # Install Jupyterlab Extension
     # jupyter labextension install jupyter-threejs --no-build && \
     # # Build Jupyterlab Extension
@@ -120,6 +113,11 @@ RUN pip install \
     # rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
+ADD ./requirements.txt /
+
+# build a basic http/Async services env.
+RUN pip install -r /requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 
 # RUN mkdir /home/$NB_USER/nb_demo && \
 #     fix-permissions /home/$NB_USER
