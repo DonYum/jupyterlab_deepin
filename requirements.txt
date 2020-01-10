@@ -17,10 +17,10 @@
 
 arrow
 requests
-pymongo==3.7.1
-mongoengine==0.17.0
 dictdiffer
 tenacity
+pymongo==3.7
+mongoengine==0.17
 
 # # fbprophet
 # rarfile
