@@ -1,0 +1,24 @@
+
+piexif
+ffmpy
+msgpack
+
+# fbprophet
+rarfile
+filetype
+redis
+gevent
+features
+grpcio
+grpcio-tools
+boto
+blinker
+imagehash
+distance
+sklearn
+
+pathos
+redlock
+ray
+
+baidu-aip
