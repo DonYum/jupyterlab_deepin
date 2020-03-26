@@ -8,8 +8,8 @@ LABEL description="custumed jupyterlab env."
 ADD ./ /work_dir
 WORKDIR /work_dir
 
-RUN conda install opencv --quiet --yes && \
-    conda clean --all -f -y
+# RUN conda install opencv --quiet --yes && \
+#     conda clean --all -f -y
 
 # Install spec packs.
 RUN pip install -r ./requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com

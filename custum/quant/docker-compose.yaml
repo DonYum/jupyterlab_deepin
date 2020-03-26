@@ -1,14 +1,13 @@
-
-version: "2.0"
+version: "3"
 
 services:
   jupyterlab_quant:
     container_name: ${NAME}
     build: .
+    shm_size: 4g
     restart: always
     user: root
     # privileged: true
-    shm_size: '4gb'
     working_dir: /home/jovyan/work/
     environment:
       JUPYTER_ENABLE_LAB: "yes"
