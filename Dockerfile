@@ -18,15 +18,15 @@ USER $NB_UID
 #   -- 使用python3.6： faiss-cpu不支持3.7 --
 # RUN conda install --quiet --yes python=3.6 && \
 RUN conda install --quiet --yes \
-        'jupyterlab=1.2.4' \
+        'jupyterlab=2.1' \
         'ipywidgets' \
-        'numba' \
-        'protobuf' \
+        # 'numba' \
+        # 'protobuf' \
         'scikit-learn' \
         'scipy' \
-        'lxml' \
-        'sqlalchemy' \
-        'statsmodels' \
+        # 'lxml' \
+        # 'sqlalchemy' \
+        # 'statsmodels' \
         'matplotlib' \
     && \
     conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
@@ -35,15 +35,15 @@ RUN conda install --quiet --yes \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
-        'seaborn' \
+        # 'seaborn' \
         'tqdm' \
         'chart_studio' \
         'tushare' \
-        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
-    && \
-    # Fix cufflinks version not compatible.
-    sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
-    sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py
+        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+    # && \
+    # # Fix cufflinks version not compatible.
+    # sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
+    # sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py
 
 # Install Jupyterlab Extension
     # Activate ipywidgets extension in the environment that runs the notebook server
@@ -51,11 +51,11 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     # Also activate ipywidgets extension for JupyterLab
     # Check this URL for most recent compatibilities
     # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager@^1.0.1 --no-build && \
-    jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    # jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
     jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter labextension install @jupyterlab/plotly-extension --no-build && \
-    jupyter labextension install ipyvolume --no-build && \
+    # jupyter labextension install ipyvolume --no-build && \
     jupyter labextension install jupyter-threejs --no-build && \
     # Build Jupyterlab Extension
     jupyter lab build --dev-build=False && \
