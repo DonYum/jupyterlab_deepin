@@ -29,7 +29,7 @@ RUN conda install --quiet --yes \
         # 'statsmodels' \
         'matplotlib' \
     && \
-    conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
+    # conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
     conda clean --all -f -y && \
     pip install \
         'plotly-express' \

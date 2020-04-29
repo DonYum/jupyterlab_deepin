@@ -85,5 +85,6 @@ Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 
 ## TODO
 
-- 目前还不支持faiss-cpu，原因是python3.7不支持。解决方法：1. 用data_pf docker做基板（意味着data_pf和其他场景的jupyter要隔离开了，而且要解决权限问题）；2. unpin python，install python3.6（不可行）；
-- matplotlib中文字体；
+- 目前还不支持faiss-cpu，原因是python3.7不支持。解决方法：
+  1. 用data_pf docker做基板（意味着data_pf和其他场景的jupyter要隔离开了，而且要解决权限问题）；
+  2. unpin python，install python3.6（不可行）；
