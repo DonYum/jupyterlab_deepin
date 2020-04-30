@@ -18,7 +18,7 @@ USER $NB_UID
 #   -- 使用python3.6： faiss-cpu不支持3.7 --
 # RUN conda install --quiet --yes python=3.6 && \
 RUN conda install --quiet --yes \
-        'jupyterlab=2.1' \
+        'jupyterlab=1.2.14' \
         'ipywidgets' \
         # 'numba' \
         # 'protobuf' \
