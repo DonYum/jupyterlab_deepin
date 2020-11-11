@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 
 # 使用minimal-notebook替代scipy-notebook
-ARG BASE_CONTAINER=jupyter/minimal-notebook
+ARG BASE_CONTAINER=jupyter/minimal-notebook:42f4c82a07ff
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Jiangzhe Ren<eric_ren@aliyun.com>"
@@ -18,8 +18,8 @@ USER $NB_UID
 #   -- 使用python3.6： faiss-cpu不支持3.7 --
 # RUN conda install --quiet --yes python=3.6 && \
 RUN conda install --quiet --yes \
-        'jupyterlab=2.2.6' \
-        # 'jupyterlab' \
+        # 'jupyterlab=2.2.6' \
+        'jupyterlab' \
         'ipywidgets' \
         # 'numba' \
         # 'protobuf' \
