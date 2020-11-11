@@ -121,6 +121,7 @@ ADD ./requirements.txt /
 # build a basic http/Async services env.
 RUN pip install -r /requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 
+USER root
 RUN apt-get update
 RUN apt-get install -y git build-essential cmake libprotobuf-dev protobuf-compiler
 
