@@ -31,7 +31,9 @@ RUN conda install --quiet --yes \
         'matplotlib' \
     && \
     # conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
-    pip install \
+    conda clean --all -f -y
+
+RUN pip install \
         'plotly-express' \
         'cufflinks' \
         'pyyaml' \
@@ -39,8 +41,7 @@ RUN conda install --quiet --yes \
         'tqdm' \
         'chart_studio' \
         'tushare' \
-        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
-    conda clean --all -f -y
+        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
     # && \
     # # Fix cufflinks version not compatible.
     # sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
