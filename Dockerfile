@@ -14,11 +14,12 @@ RUN rm -rf $CONDA_DIR/conda-meta/pinned
 USER $NB_UID
 
 # Install Python 3 packages
-#   手动指定jupyterlab版本
+#   手动指定jupyterlab版本：2020.11.11, why？
 #   -- 使用python3.6： faiss-cpu不支持3.7 --
 # RUN conda install --quiet --yes python=3.6 && \
 RUN conda install --quiet --yes \
-        'jupyterlab=1.2.14' \
+        # 'jupyterlab=1.2.14' \
+        'jupyterlab' \
         'ipywidgets' \
         # 'numba' \
         # 'protobuf' \
@@ -30,7 +31,6 @@ RUN conda install --quiet --yes \
         'matplotlib' \
     && \
     # conda install pytorch torchvision cpuonly -c pytorch --quiet --yes && \
-    conda clean --all -f -y && \
     pip install \
         'plotly-express' \
         'cufflinks' \
@@ -39,7 +39,8 @@ RUN conda install --quiet --yes \
         'tqdm' \
         'chart_studio' \
         'tushare' \
-        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+        -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com \
+    conda clean --all -f -y
     # && \
     # # Fix cufflinks version not compatible.
     # sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
@@ -127,4 +128,4 @@ RUN apt-get install -y git build-essential cmake libprotobuf-dev protobuf-compil
 # COPY nb_demo /home/$NB_USER/nb_demo
 # RUN fix-permissions /home/$NB_USER
 
-USER $NB_UID
+# USER $NB_UID
