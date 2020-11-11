@@ -47,27 +47,27 @@ RUN pip install \
     # sed -i 's/import plotly.plotly as py/import chart_studio.plotly as py/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py && \
     # sed -i 's/from plotly.plotly import plot/from chart_studio.plotly import plot/g' /opt/conda/lib/python3.7/site-packages/cufflinks/*.py
 
-# Install Jupyterlab Extension
-    # Activate ipywidgets extension in the environment that runs the notebook server
-RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    # Also activate ipywidgets extension for JupyterLab
-    # Check this URL for most recent compatibilities
-    # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    # jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
-    jupyter labextension install @jupyterlab/toc --no-build && \
-    jupyter labextension install @jupyterlab/plotly-extension --no-build && \
-    # jupyter labextension install ipyvolume --no-build && \
-    jupyter labextension install jupyter-threejs --no-build && \
-    # Build Jupyterlab Extension
-    jupyter lab build --dev-build=False && \
-    npm cache clean --force && \
-    # Clean cache & fix-permissions
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    rm -rf /home/$NB_USER/.node-gyp && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+# # Install Jupyterlab Extension
+#     # Activate ipywidgets extension in the environment that runs the notebook server
+# RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+#     # Also activate ipywidgets extension for JupyterLab
+#     # Check this URL for most recent compatibilities
+#     # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
+#     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+#     # jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
+#     jupyter labextension install @jupyterlab/toc --no-build && \
+#     jupyter labextension install @jupyterlab/plotly-extension --no-build && \
+#     # jupyter labextension install ipyvolume --no-build && \
+#     jupyter labextension install jupyter-threejs --no-build && \
+#     # Build Jupyterlab Extension
+#     jupyter lab build --dev-build=False && \
+#     npm cache clean --force && \
+#     # Clean cache & fix-permissions
+#     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+#     rm -rf /home/$NB_USER/.cache/yarn && \
+#     rm -rf /home/$NB_USER/.node-gyp && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER
 
 # # Import matplotlib the first time to build the font cache.
 # ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
